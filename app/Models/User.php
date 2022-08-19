@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'meli_id',
+        'meli_status',
     ];
 
     /**

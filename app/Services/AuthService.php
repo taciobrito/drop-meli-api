@@ -11,8 +11,6 @@ class AuthService extends MeliService
     private $code;
     private $accessToken;
     private $refreshToken;
-    private $username;
-    private $password;
 
     public function __construct()
     {
@@ -20,8 +18,6 @@ class AuthService extends MeliService
 
         $this->pathAccessToken = env('MELI_PATH_ACCESS_TOKEN', '/token/accessToken.txt');
         $this->pathRefreshToken = env('MELI_PATH_REFRESH_TOKEN', '/token/refreshToken.txt');
-        $this->username = env('MELI_USER');
-        $this->password = env('MELI_PASS');
     }
 
     public function createAccessToken()
@@ -125,6 +121,7 @@ class AuthService extends MeliService
 
     public function getCurrentUser()
     {
-        return Http::withHeaders($this->getHeadersWithToken())->get("{$this->getBaseUrl()}/users/me");
+        return Http::withHeaders($this->getHeadersWithToken())
+            ->get("{$this->getBaseUrl()}/users/me");
     }
 }
