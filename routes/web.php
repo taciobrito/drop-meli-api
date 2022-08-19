@@ -14,9 +14,9 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/authorization', [AuthController::class, 'authorization']);
-Route::get('/redirect', [AuthController::class, 'redirect']);
+Route::get('/', function () {
+    return redirect('authorization');
+});
 
-Route::view('/{any}', 'index')
-    ->where('any', '.*')
-    ->middleware('check.auth');
+Route::get('authorization', [AuthController::class, 'authorization']);
+Route::get('redirect', [AuthController::class, 'redirect']);
